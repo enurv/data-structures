@@ -8,11 +8,6 @@ struct Stack{
 };
 typedef struct Stack stack;
 
-/*void initialize(stack* s){ //initiliazer olusturmayi beceremedim.
-    s->top = 0;
-    s->boyut = 2;
-    s->yigin = (int*)malloc(sizeof(int) * s->boyut);
-}*/
 
 void pop(stack* s){
     if(s->top == -1){ //bos olma durumunu kontrol eder
@@ -38,7 +33,7 @@ int top(stack* s){ //en ustteki sayiyi dondurur.
 }
 
 void push(stack* s, int x){
-    if(s->top + 1 == (s->boyut)){ //eger boyutu doldurduysak boyutu iki katýna cikarir.
+    if(s->top + 1 == (s->boyut)){ //eger boyutu doldurduysak boyutu iki katÃ½na cikarir.
         int* yeniYigin = (int*)malloc(sizeof(int) * s->boyut * 2);
         for(int i = 0; i < s->boyut; ++i){
             yeniYigin[i] = s->yigin[i];

@@ -56,7 +56,21 @@ void dequeue(queue* qu){
     if(qu->front == -1 && qu->rear == -1){
         printf("Bu kuyruk bos!\n");
         return;
-    }//else if(){}
+    }else if((qu->rear - qu->front) <= (qu->boyut-1)/4){
+        qu->boyut /= 2;
+        int* yeniKuyruk = (int*)malloc(sizeof(int)*(qu->boyut));
+        int sayac = -1;
+        for(int i = qu->front; i <= qu->rear; ++i){
+            sayac++;
+            yeniKuyruk[sayac] = qu->kuyruk[i];
+        }
+        free(qu->kuyruk);
+        qu->kuyruk = yeniKuyruk;
+        qu->front = 0;
+        qu->rear = sayac;
+        printf("front: %d ve rear: %d, boyut: %d\n", qu->front, qu->rear, qu->boyut);
+        return;
+    }
     else{
         //printf("front: %d ve rear: %d\n", qu->front, qu->rear);
         printf("%d silindi\n", qu->kuyruk[qu->front]);
@@ -72,7 +86,7 @@ void bastir(queue* qu){
 }
 
 int main(){
-    queue* yeniKuyruk = yeniQueueOlustur(3);
+    queue* yeniKuyruk = yeniQueueOlustur(2);
     dequeue(yeniKuyruk);
     enqueue(yeniKuyruk, 10);
     enqueue(yeniKuyruk, 20);
@@ -82,7 +96,17 @@ int main(){
     enqueue(yeniKuyruk, 50);
     enqueue(yeniKuyruk, 60);
     bastir(yeniKuyruk);
+    enqueue(yeniKuyruk, 70);
+    bastir(yeniKuyruk);
+    enqueue(yeniKuyruk, 80);
+    bastir(yeniKuyruk);
     dequeue(yeniKuyruk);
+    dequeue(yeniKuyruk);
+    bastir(yeniKuyruk);
+    dequeue(yeniKuyruk);
+    dequeue(yeniKuyruk);
+    dequeue(yeniKuyruk);
+    bastir(yeniKuyruk);
     dequeue(yeniKuyruk);
     dequeue(yeniKuyruk);
     bastir(yeniKuyruk);

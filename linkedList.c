@@ -49,7 +49,7 @@ node* siraliEkle(node* root, int x){ //root degeri degisebilecegi icin node* deg
             temp->next = root;
             return temp;
     }else{
-        node* iter = root; //root degerini kaybetmemek icin iterator kullanmak önemli.
+        node* iter = root; //root degerini kaybetmemek icin iterator kullanmak Ã¶nemli.
         while(iter->next != NULL && iter->next->x < x){
                 iter = iter->next;
         }//iterator istenen dugume geldi.
@@ -62,7 +62,7 @@ node* siraliEkle(node* root, int x){ //root degeri degisebilecegi icin node* deg
 }
 
 node* sil(node* root, int x){//root degeri degisebilecegi icin yine node* gonderiyoruz.
-    node* temp; //free() fonksiyonunu calistirmak icin silinen dugumun adresi gecici bir sure icin saklanmalý.
+    node* temp; //free() fonksiyonunu calistirmak icin silinen dugumun adresi gecici bir sure icin saklanmalÄ±.
     node* iter = root;
     if(x == root -> x){ //eger aranan deger ilk root dugumundeyse
         temp = root;
@@ -73,7 +73,7 @@ node* sil(node* root, int x){//root degeri degisebilecegi icin yine node* gonder
         while(iter->next != NULL && iter->next->x != x){
             iter = iter->next;
         }
-        if(iter->next == NULL){//listenin sonuna gelindiyse ve deger bulunmadiysa. (cunku iter silinecek elemanýn bir onunde durmali)
+        if(iter->next == NULL){//listenin sonuna gelindiyse ve deger bulunmadiysa. (cunku iter silinecek elemanÄ±n bir onunde durmali)
             printf("sayi bulunamadi\n");
             return root;
         }else if(iter->next->x == x){
@@ -93,6 +93,5 @@ int main(){
     root = ekle(root, 20);
     root = ekle(root, 356);
     bastir(root);
-    root = reverse(root);
     bastir(root);
 }

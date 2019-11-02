@@ -79,13 +79,15 @@ void traverse(nodeTree* root){
     }
 }
 
-void listeyeKoy(node* root, nodeTree* tree){
+node* listeyeKoy(node* root, nodeTree* tree){
     if(tree == NULL){
-        return;
+        return root;
     }else{
-        traverse(tree->left);
+        root = listeyeKoy(root, tree->left);
         root = ekle(root, tree->data);
-        traverse(tree->right);
+        printf("listeye %d eklendi\n", tree->data);
+        //bastir(root);
+        root = listeyeKoy(root, tree->right);
     }
 }
 
@@ -100,6 +102,6 @@ int main(){
     root = insertNode(root, 79);
     root = insertNode(root, 59);
     node* rootList = NULL;
-    listeyeKoy(rootList, root);
+    rootList = listeyeKoy(rootList, root);
     bastir(rootList);
 }

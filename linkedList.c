@@ -7,6 +7,7 @@ struct Node{
 };
 typedef struct Node node;
 
+
 void bastir(node* root){
     while(root != NULL){ //iter olmadan rootu hareket ettirebiliriz. root NULL oldugunda listin sonuna gelmisiz demektir.
         printf("%d ", root->x);
@@ -15,20 +16,23 @@ void bastir(node* root){
     printf("\n");
 }
 
-void ekle(node* root, int x){ //bu fonksiyon yeni gelen elemanlari listin sonua ekler.
+node* ekle(node* root, int x){ //bu fonksiyon yeni gelen elemanlari listin sonua ekler.
     if(root == NULL){ //listte eleman yoksa calisir.
         node* temp = (node*)malloc(sizeof(node));
         temp->x = x;
         temp->next = NULL; //onemli
         root = temp;
+        return root;
     }else{
-        while(root->next != NULL){ //root yine iterator olarak kullanildi. Burada iteratorun nexti kontrol etmesi onemli cunku iteri NULL bir degere atamak istemeyiz.
-            root = root->next;
+        node* iter = root;
+        while(iter->next != NULL){ //Burada iteratorun nexti kontrol etmesi onemli cunku iteri NULL bir degere atamak istemeyiz.
+            iter = iter->next;
         }//son dugume gelindi
         node* temp = (node*)malloc(sizeof(node));
         temp->x = x;
         temp->next = NULL;
-        root->next = temp;
+        iter->next = temp;
+        return root;
     }
 }
 
@@ -84,7 +88,11 @@ node* sil(node* root, int x){//root degeri degisebilecegi icin yine node* gonder
 
 int main(){
     node* root = NULL;
-    node* iter;
-    iter = root;
-
+    root = ekle(root, 1);
+    root = ekle(root, 35);
+    root = ekle(root, 20);
+    root = ekle(root, 356);
+    bastir(root);
+    root = reverse(root);
+    bastir(root);
 }

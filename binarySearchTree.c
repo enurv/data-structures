@@ -91,6 +91,34 @@ int height(node* root){
     }
 }
 
+node* sil(node* root, int x){
+    if(root == NULL){
+        printf("Bu agac bos\n");
+        return root;
+    }
+    if(x < root->data){
+        root->left = sil(root->left, x);
+        return root;
+    }
+    if(x > root->data){
+        root->right = sil(root->right, x);
+        return root;
+    }
+    if(x == root->data){
+        if(root->left == NULL && root->right == NULL){
+            return NULL;
+        }else if(root->left != NULL){
+            root->data = findMax(root->left);
+            root->left = sil(root->left, findMax(root->left));
+            return root;
+        }else{
+            root->data = findMin(root->right);
+            root->right = sil(root->right, findMin(root->right));
+            return root;
+        }
+    }
+}
+
 int main(){
     node* root = NULL;
     root = insertNode(root, 15);
@@ -102,5 +130,9 @@ int main(){
     search(root, 15);
     printf("max: %d\n", findMax(root));
     printf("min: %d\n", findMin(root));
+    traverse(root);printf("\n");
+    root = sil(root, 8);
+    root = sil(root, 15);
     traverse(root);
+
 }

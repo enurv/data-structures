@@ -11,7 +11,7 @@ struct Queue{
 typedef struct Queue queue;
 
 queue* yeniQueueOlustur(int sayi){
-    queue* kuyruk1;
+    queue* kuyruk1 = (queue*)malloc(sizeof(queue));
     kuyruk1->boyut = sayi;
     kuyruk1->rear = -1;
     kuyruk1->front = -1;

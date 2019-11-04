@@ -20,9 +20,6 @@ node* createNewNode(int x){
 node* insertNode(node* root, int x){
     if(root == NULL){
         node* newNode = createNewNode(x);
-        newNode->data = x;
-        newNode->left = NULL;
-        newNode->right = NULL;
         printf("%d eklendi\n", newNode->data);
         return newNode;
     }else{

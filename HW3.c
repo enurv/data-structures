@@ -53,8 +53,4 @@ int main(){
         fputs("\n", yaz);
     }
 
-    /*for(int i = 0; i < boyut*boyut*2; i++){
-        printf(" %d ", tekDizi[i]);
-    }*/
-
 }
